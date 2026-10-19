@@ -15,7 +15,7 @@
       styleClass="menu-root">
 
     <VBox spacing="4" styleClass="menu-brand">
-        <Label text="PÁDEL TORNEOS" styleClass="menu-brand"/>
+        <Label text="PADELCITO APP" styleClass="menu-brand"/>
         <Label text="Sistema de gestión" styleClass="menu-subtitle"/>
     </VBox>
 
@@ -34,9 +34,13 @@
                        onMouseClicked="#onPartidos"
                        styleClass="menu-item"/>
 
-                <Label fx:id="lblJugadores" text="👥 Jugadores"
+                <Label fx:id="lblJugadores" text="🧑‍ Jugadores"
                        onMouseClicked="#onJugadores"
                        styleClass="menu-item"/>
+                       
+                <Label fx:id="lblParejas" text="👥 Parejas"
+                       onMouseClicked="#onParejas"
+                       styleClass="menu-item"/>       
 
                 <Label fx:id="lblInscripciones" text="📝 Inscripciones"
                        onMouseClicked="#onInscripciones"

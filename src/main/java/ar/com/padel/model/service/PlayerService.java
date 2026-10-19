@@ -26,20 +26,32 @@ public class PlayerService {
     }
 
     public void create(Player player) throws SQLException {
+        validateCategory(player.getCategory());
+
         Employee logged = SessionContext.getLoggedUser();
         player.setUserAdded(logged);
         player.setDateAdded(LocalDateTime.now());
+
         playerDAO.insert(player);
     }
 
     public void update(Player player) throws SQLException {
+        validateCategory(player.getCategory());
+
         Employee logged = SessionContext.getLoggedUser();
         player.setUserChanged(logged);
         player.setDateChanged(LocalDateTime.now());
+
         playerDAO.update(player);
     }
 
     public void delete(Long playerId) throws SQLException {
         playerDAO.delete(playerId);
+    }
+
+    private void validateCategory(int category) {
+        if (category < 1 || category > 8) {
+            throw new IllegalArgumentException("La categoría debe estar entre 1 y 8.");
+        }
     }
 }

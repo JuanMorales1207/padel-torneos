@@ -13,14 +13,14 @@ public class MainApp extends Application {
         primaryStage = stage;
 
         try {
-            stage.setTitle("Pádel Torneos");
+            stage.setTitle("Padelcito App");
             // Inicializar las dependencias de la aplicación.
             SceneManager.initialize();
             // La pantalla inicial siempre será el login.
             SceneManager.showLogin();
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("No se pudo iniciar la aplicación Pádel Torneos.");
+            System.err.println("No se pudo iniciar la aplicación Padelcito App.");
             stage.close();
         }
     }

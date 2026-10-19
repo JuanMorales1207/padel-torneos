@@ -3,22 +3,21 @@ package ar.com.padel.controller;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 import ar.com.padel.config.DataSourceProvider;
-import ar.com.padel.controller.menu.MenuBaseController;
 import ar.com.padel.model.dao.PlayerDAO;
 import ar.com.padel.model.dao.PlayerDAOImpl;
 import ar.com.padel.model.entity.Player;
 import ar.com.padel.model.service.PlayerService;
-import ar.com.padel.security.context.SessionContext;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
@@ -34,6 +33,7 @@ public class PlayersController {
     @FXML private TableView<Player> playersTable;
     @FXML private TableColumn<Player, String> nombreColumn;
     @FXML private TableColumn<Player, String> apellidoColumn;
+    @FXML private TableColumn<Player, Integer> categoriaColumn;
     @FXML private TableColumn<Player, LocalDate> fechaNacimientoColumn;
 
     private PlayerService playerService;
@@ -41,12 +41,11 @@ public class PlayersController {
     @FXML
     public void initialize() {
         nombreColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-
         apellidoColumn.setCellValueFactory(new PropertyValueFactory<>("lastname"));
-
+        categoriaColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
         fechaNacimientoColumn.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
-
-        fechaNacimientoColumn.setCellFactory(column -> new javafx.scene.control.TableCell<>() {
+        fechaNacimientoColumn.setCellFactory(column ->
+                new javafx.scene.control.TableCell<>() {
                     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
                     @Override
@@ -64,6 +63,7 @@ public class PlayersController {
     private void loadPlayers() {
         try {
             ObservableList<Player> data = FXCollections.observableArrayList(playerService.findAll());
+
             playersTable.setItems(data);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -84,6 +84,7 @@ public class PlayersController {
             showError("Seleccioná un jugador para editar.");
             return;
         }
+
         showPlayerDialog(selected);
     }
 
@@ -99,14 +100,14 @@ public class PlayersController {
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
         confirm.setTitle("Eliminar jugador");
         confirm.setHeaderText("Eliminar jugador");
-        confirm.setContentText("¿Deseás eliminar a " + selected.getName() + " "+ selected.getLastname() + "?");
+        confirm.setContentText("¿Deseás eliminar a " + selected.getName()
+                + " " + selected.getLastname() + "?");
 
         Optional<ButtonType> result = confirm.showAndWait();
 
         if (result.isEmpty() || result.get().getButtonData() != ButtonData.OK_DONE) {
             return;
         }
-
         try {
             playerService.delete(selected.getSurrogate());
             loadPlayers();
@@ -124,19 +125,22 @@ public class PlayersController {
         dialog.setHeaderText(isNew ? "Ingresá los datos del jugador" : "Modificá los datos del jugador");
         ButtonType saveButton = new ButtonType("Guardar", ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(saveButton, ButtonType.CANCEL);
-
         TextField txtName = new TextField();
         txtName.setPromptText("Nombre");
-
         TextField txtLastName = new TextField();
         txtLastName.setPromptText("Apellido");
-
         DatePicker dpBirthdate = new DatePicker();
-
+        ComboBox<Integer> cmbCategory = new ComboBox<>();
+        cmbCategory.setItems(FXCollections.observableArrayList(IntStream.rangeClosed(1, 8).boxed().toList()));
+        cmbCategory.setPromptText("Seleccioná una categoría");
+        cmbCategory.setMaxWidth(Double.MAX_VALUE);
         if (!isNew) {
             txtName.setText(existingPlayer.getName());
             txtLastName.setText(existingPlayer.getLastname());
             dpBirthdate.setValue(existingPlayer.getBirthdate());
+            cmbCategory.setValue(existingPlayer.getCategory());
+        } else {
+            cmbCategory.getSelectionModel().selectFirst();
         }
 
         GridPane grid = new GridPane();
@@ -150,26 +154,30 @@ public class PlayersController {
         grid.add(new Label("Apellido:"), 0, 1);
         grid.add(txtLastName, 1, 1);
 
-        grid.add(new Label("Fecha de nacimiento:"), 0, 2);
-        grid.add(dpBirthdate, 1, 2);
+        grid.add(new Label("Categoría:"), 0, 2);
+        grid.add(cmbCategory, 1, 2);
+
+        grid.add(new Label("Fecha de nacimiento:"), 0, 3);
+        grid.add(dpBirthdate, 1, 3);
 
         dialog.getDialogPane().setContent(grid);
 
-        dialog.setResultConverter(button -> {
-            if (button == saveButton) {
-                return saveButton;
-            }
-            return button;
-        });
+        dialog.getDialogPane().lookupButton(saveButton)
+                .addEventFilter(javafx.event.ActionEvent.ACTION, event -> {
+                    if (txtName.getText().isBlank() || txtLastName.getText().isBlank()) {
+                        event.consume();
+                        showError("El nombre y el apellido son obligatorios.");
+                        return;
+                    }
 
-        dialog.getDialogPane().lookupButton(saveButton).addEventFilter(javafx.event.ActionEvent.ACTION,
-        		event -> {
-        			if (txtName.getText().isBlank() || txtLastName.getText().isBlank()) {
-                                event.consume();
-                                showError("El nombre y el apellido son obligatorios.");
-                            }
-                        });
+                    if (cmbCategory.getValue() == null) {
+                        event.consume();
+                        showError("Seleccioná una categoría.");
+                    }
+                });
+
         Optional<ButtonType> result = dialog.showAndWait();
+
         if (result.isEmpty() || result.get() != saveButton) {
             return;
         }
@@ -177,6 +185,7 @@ public class PlayersController {
         String name = txtName.getText().trim();
         String lastName = txtLastName.getText().trim();
         LocalDate birthdate = dpBirthdate.getValue();
+        int category = cmbCategory.getValue();
 
         try {
             Player player = isNew ? new Player() : existingPlayer;
@@ -184,6 +193,7 @@ public class PlayersController {
             player.setName(name);
             player.setLastname(lastName);
             player.setBirthdate(birthdate);
+            player.setCategory(category);
 
             if (isNew) {
                 playerService.create(player);

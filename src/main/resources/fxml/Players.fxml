@@ -36,6 +36,10 @@
                          text="Apellido"
                          prefWidth="220"/>
 
+            <TableColumn fx:id="categoriaColumn"
+                         text="Categoría"
+                         prefWidth="100"/>
+
             <TableColumn fx:id="fechaNacimientoColumn"
                          text="Fecha de nacimiento"
                          prefWidth="180"/>

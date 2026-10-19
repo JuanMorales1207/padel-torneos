@@ -42,7 +42,7 @@ public final class SceneManager {
             Parent root = loader.load();
             LoginController controller = loader.getController();
             controller.setLoginService(loginService);
-            showScene(root, "Pádel Torneos", true);
+            showScene(root, "Padelcito App", true);
         } catch (IOException e) {
             throw new IllegalStateException("No se pudo cargar la pantalla de login.", e);
         }
@@ -52,7 +52,7 @@ public final class SceneManager {
      * Muestra el layout principal después del login.
      */
     public static void showMainLayout() {
-        setScene("/fxml/MainLayout.fxml", "Pádel Torneos", false);
+        setScene("/fxml/MainLayout.fxml", "Padelcito App", false);
     }
 
     /**

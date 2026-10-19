@@ -1,3 +1,4 @@
+
 package ar.com.padel.model.dao;
 
 import java.sql.Connection;
@@ -74,8 +75,8 @@ public class PlayerDAOImpl implements PlayerDAO {
 
         String sql = """
             INSERT INTO Player
-                (Name, LastName, Birthdate, UserAdded, DateAdded)
-            VALUES (?, ?, ?, ?, ?)
+                (Name, LastName, Birthdate, Category, UserAdded, DateAdded)
+            VALUES (?, ?, ?, ?, ?, ?)
             """;
 
         try (Connection con = dataSource.getConnection();
@@ -91,15 +92,17 @@ public class PlayerDAOImpl implements PlayerDAO {
                 ps.setNull(3, java.sql.Types.DATE);
             }
 
+            ps.setInt(4, player.getCategory());
+
             Employee user = SessionContext.getLoggedUser();
 
             if (user != null) {
-                ps.setObject(4, user.getSurrogate());
+                ps.setObject(5, user.getSurrogate());
             } else {
-                ps.setNull(4, java.sql.Types.BIGINT);
+                ps.setNull(5, java.sql.Types.BIGINT);
             }
 
-            ps.setTimestamp(5, Timestamp.valueOf(player.getDateAdded()));
+            ps.setTimestamp(6, Timestamp.valueOf(player.getDateAdded()));
 
             ps.executeUpdate();
 
@@ -119,6 +122,7 @@ public class PlayerDAOImpl implements PlayerDAO {
             SET Name = ?,
                 LastName = ?,
                 Birthdate = ?,
+                Category = ?,
                 UserChanged = ?,
                 DateChanged = CURRENT_TIMESTAMP
             WHERE PlayerId = ?
@@ -137,15 +141,17 @@ public class PlayerDAOImpl implements PlayerDAO {
                 ps.setNull(3, java.sql.Types.DATE);
             }
 
+            ps.setInt(4, player.getCategory());
+
             Employee user = SessionContext.getLoggedUser();
 
             if (user != null) {
-                ps.setObject(4, user.getSurrogate());
+                ps.setObject(5, user.getSurrogate());
             } else {
-                ps.setNull(4, java.sql.Types.BIGINT);
+                ps.setNull(5, java.sql.Types.BIGINT);
             }
 
-            ps.setLong(5, player.getSurrogate());
+            ps.setLong(6, player.getSurrogate());
 
             ps.executeUpdate();
         }
@@ -187,6 +193,7 @@ public class PlayerDAOImpl implements PlayerDAO {
         player.setSurrogate(rs.getLong("PlayerId"));
         player.setName(rs.getString("Name"));
         player.setLastname(rs.getString("LastName"));
+        player.setCategory(rs.getInt("Category"));
 
         Date birthdate = rs.getDate("Birthdate");
         if (birthdate != null) {

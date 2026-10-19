@@ -9,6 +9,7 @@ public class MenuOperatorController extends MenuBaseController {
     @FXML private Label lblTorneos;
     @FXML private Label lblPartidos;
     @FXML private Label lblJugadores;
+    @FXML private Label lblParejas;
     @FXML private Label lblInscripciones;
     @FXML private Label lblEstadisticas;
     @FXML private Label lblAcercaDe;
@@ -16,19 +17,19 @@ public class MenuOperatorController extends MenuBaseController {
 
     @FXML
     public void initialize() {
-        initializeMenu(lblUser, lblTorneos, lblPartidos, lblJugadores, 
+        initializeMenu(lblUser, lblTorneos, lblPartidos, lblJugadores, lblParejas,
         		lblInscripciones, lblEstadisticas, lblAcercaDe);
     }
 
     @FXML
     private void onTorneos(MouseEvent event) {
-        // TODO: conectar con la pantalla de torneos.
+    	mainLayoutController.setContentWithBase("Torneos", "/fxml/ComingSoon.fxml");
         setActive(lblTorneos);
     }
 
     @FXML
     private void onPartidos(MouseEvent event) {
-        // TODO: conectar con la pantalla de partidos.
+    	mainLayoutController.setContentWithBase("Partidos", "/fxml/ComingSoon.fxml");
         setActive(lblPartidos);
     }
 
@@ -37,27 +38,34 @@ public class MenuOperatorController extends MenuBaseController {
         mainLayoutController.setContentWithBase("Jugadores", "/fxml/Players.fxml");
         setActive(lblJugadores);
     }
+    
+    @FXML
+    private void onParejas() {
+        mainLayoutController.setContentWithBase("Parejas", "/fxml/Couples.fxml");
+        setActive(lblParejas);
+    }
 
     @FXML
     private void onInscripciones(MouseEvent event) {
-        // TODO: conectar con la pantalla de inscripciones.
+    	mainLayoutController.setContentWithBase("Inscripciones", "/fxml/ComingSoon.fxml");
         setActive(lblInscripciones);
     }
 
     @FXML
     private void onEstadisticas(MouseEvent event) {
-        // TODO: conectar con la pantalla de estadísticas.
+        mainLayoutController.setContentWithBase("Estadísticas", "/fxml/ComingSoon.fxml");
         setActive(lblEstadisticas);
     }
 
     @FXML
     private void onAcercaDe(MouseEvent event) {
-        // TODO: implementar la ventana Acerca de.
+    	mainLayoutController.setContentWithBase("Acerca de", "/fxml/ComingSoon.fxml");
         setActive(lblAcercaDe);
     }
 
     @FXML
     private void onModifyUser() {
-        // TODO: implementar la pantalla Mi cuenta.
+        //TODO: implementar la pantalla Mi cuenta.
+    	mainLayoutController.setContentWithBase("Mi Cuenta", "/fxml/ComingSoon.fxml");
     }
 }

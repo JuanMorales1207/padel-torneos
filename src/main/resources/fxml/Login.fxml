@@ -33,7 +33,7 @@
 
             <children>
                 <VBox spacing="6.0">
-                    <Label text="PÁDEL TORNEOS"
+                    <Label text="PADELCITO APP"
                            style="-fx-font-size: 13px;
                                   -fx-font-weight: bold;
                                   -fx-text-fill: #647B6D;"/>

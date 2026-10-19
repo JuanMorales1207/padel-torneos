@@ -5,11 +5,14 @@ import java.time.LocalDateTime;
 
 public class Player extends Individual {
 
+    private int category;
+
     // Constructor con todos los datos del jugador.
     public Player(Long surrogate, String name, String lastName, LocalDate birthdate, LocalDateTime createdDate,
-            LocalDateTime updatedDate, Employee createdBy, Employee updatedBy) {
+            LocalDateTime updatedDate, Employee createdBy, Employee updatedBy, int category) {
 
         super(surrogate, name, lastName, birthdate, createdDate, updatedDate, createdBy, updatedBy);
+        this.category = category;
     }
 
     // Constructor para nuevos jugadores con datos de auditoría.
@@ -20,6 +23,14 @@ public class Player extends Individual {
     // Constructor por defecto.
     public Player() {
         super();
+    }
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
     }
 
     @Override
