@@ -1,0 +1,256 @@
+
+/* ==============================
+   PALETA Y ESTILOS GENERALES
+   Sistema de Gestión de Pádel
+   ============================== */
+
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+    -fx-background-color: #F4EBDD;
+    -fx-text-fill: #343631;
+}
+
+/* Fondos y contenedores */
+
+.content-root {
+    -fx-background-color: #F4EBDD;
+    -fx-padding: 24;
+}
+
+.content-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #343631;
+}
+
+.content-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #797781;
+}
+
+.content-toolbar {
+    -fx-padding: 8 0 14 0;
+    -fx-spacing: 10;
+}
+
+.content-area {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-border-color: #D8D8D0;
+    -fx-border-radius: 10;
+    -fx-padding: 18;
+}
+
+.panel {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-padding: 18;
+    -fx-border-color: #E5E7DF;
+    -fx-border-radius: 10;
+}
+
+.panel-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #343631;
+}
+
+/* Botones */
+
+.button {
+    -fx-background-color: #E5E7DF;
+    -fx-text-fill: #343631;
+    -fx-background-radius: 6;
+    -fx-padding: 9 16;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #D7DCD2;
+}
+
+.button:focused {
+    -fx-border-color: #797781;
+    -fx-border-radius: 6;
+}
+
+.button-primary {
+    -fx-background-color: #647B6D;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 10 18;
+    -fx-cursor: hand;
+}
+
+.button-primary:hover {
+    -fx-background-color: #52685B;
+}
+
+.button-secondary {
+    -fx-background-color: #797781;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-padding: 9 16;
+    -fx-cursor: hand;
+}
+
+.button-secondary:hover {
+    -fx-background-color: #65636D;
+}
+
+.button-danger,
+.logout-button {
+    -fx-background-color: #A94442;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 9 16;
+    -fx-cursor: hand;
+}
+
+.button-danger:hover,
+.logout-button:hover {
+    -fx-background-color: #873532;
+}
+
+.button-success {
+    -fx-background-color: #557A61;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.button-success:hover {
+    -fx-background-color: #42634D;
+}
+
+.button:disabled {
+    -fx-opacity: 0.55;
+    -fx-cursor: default;
+}
+
+/* Campos de formulario */
+
+.text-field,
+.password-field,
+.text-area,
+.combo-box,
+.date-picker,
+.spinner {
+    -fx-background-color: white;
+    -fx-border-color: #C9CCC3;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 7;
+}
+
+.text-field:focused,
+.password-field:focused,
+.text-area:focused,
+.combo-box:focused,
+.date-picker:focused {
+    -fx-border-color: #647B6D;
+    -fx-border-width: 1.5;
+}
+
+.field-error {
+    -fx-border-color: #B42318;
+    -fx-border-width: 1.5;
+}
+
+.field-warning {
+    -fx-border-color: #B7791F;
+    -fx-border-width: 1.5;
+}
+
+/* Mensajes */
+
+.message-success {
+    -fx-background-color: #E3EEE4;
+    -fx-text-fill: #285B36;
+    -fx-padding: 10;
+    -fx-background-radius: 5;
+}
+
+.message-warning {
+    -fx-background-color: #FFF1CC;
+    -fx-text-fill: #805B10;
+    -fx-padding: 10;
+    -fx-background-radius: 5;
+}
+
+.message-error {
+    -fx-background-color: #FCE8E6;
+    -fx-text-fill: #A12622;
+    -fx-padding: 10;
+    -fx-background-radius: 5;
+}
+
+.message-info {
+    -fx-background-color: #E8E8ED;
+    -fx-text-fill: #55535F;
+    -fx-padding: 10;
+    -fx-background-radius: 5;
+}
+
+/* Tablas */
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #D8D8D0;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #E5E7DF;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: transparent;
+    -fx-size: 36px;
+    -fx-border-color: transparent transparent #D0D3CA transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #343631;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #DCE5DC;
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: #343631;
+}
+
+/* Barra de desplazamiento */
+
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #B6B8B1;
+    -fx-background-radius: 5;
+}
+
+/* Botón de exportación */
+
+.excel-button {
+    -fx-background-color: #557A61;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.excel-button:hover {
+    -fx-background-color: #42634D;
+}

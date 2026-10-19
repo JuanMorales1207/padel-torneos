@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<HBox prefHeight="560.0" prefWidth="900.0"
+      minHeight="500.0" minWidth="760.0"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ar.com.padel.controller.LoginController"
+      stylesheets="@../css/app.css">
+
+    <children>
+
+        <!-- PANEL DEL FORMULARIO -->
+        <VBox fx:id="containerLeft"
+              alignment="CENTER"
+              spacing="18.0"
+              prefWidth="520.0"
+              HBox.hgrow="ALWAYS"
+              style="-fx-background-color: #F4EBDD;">
+
+            <padding>
+                <Insets top="35" right="55" bottom="35" left="55"/>
+            </padding>
+
+            <children>
+                <VBox spacing="6.0">
+                    <Label text="PADELCITO APP"
+                           style="-fx-font-size: 13px;
+                                  -fx-font-weight: bold;
+                                  -fx-text-fill: #647B6D;"/>
+
+                    <Label text="Iniciar sesión"
+                           style="-fx-font-size: 30px;
+                                  -fx-font-weight: bold;
+                                  -fx-text-fill: #343631;"/>
+
+                    <Label text="Ingresá tus credenciales para continuar"
+                           wrapText="true"
+                           style="-fx-font-size: 13px;
+                                  -fx-text-fill: #797781;"/>
+                </VBox>
+
+                <VBox spacing="8.0" maxWidth="360.0">
+                    <Label text="Usuario"/>
+
+                    <TextField fx:id="txtUser"
+                               promptText="Ingresá tu usuario"
+                               onKeyTyped="#onKeyTyped"
+                               prefHeight="42.0"/>
+
+                    <Label text="Contraseña">
+                        <VBox.margin>
+                            <Insets top="10.0"/>
+                        </VBox.margin>
+                    </Label>
+
+                    <PasswordField fx:id="txtPassword"
+                                   promptText="Ingresá tu contraseña"
+                                   onKeyTyped="#onKeyTyped"
+                                   prefHeight="42.0"/>
+
+                    <Button fx:id="btnLogin"
+                            text="Ingresar"
+                            styleClass="button-primary"
+                            maxWidth="Infinity"
+                            prefHeight="44.0"
+                            defaultButton="true"
+                            onAction="#onLogin">
+                        <VBox.margin>
+                            <Insets top="14.0"/>
+                        </VBox.margin>
+                    </Button>
+
+                    <Label fx:id="lblError"
+                           styleClass="message-error"
+                           wrapText="true"
+                           visible="false"
+                           managed="false">
+                        <VBox.margin>
+                            <Insets top="5.0"/>
+                        </VBox.margin>
+                    </Label>
+                </VBox>
+            </children>
+        </VBox>
+
+        <!-- PANEL VISUAL CON IMAGEN -->
+        <VBox fx:id="containerRight"      
+        alignment="CENTER"
+        prefWidth="380.0"
+		minWidth="250.0"
+      	HBox.hgrow="ALWAYS"
+      	style="-fx-background-color: #797781;">
+
+	    <ImageView fx:id="imgPadelcito"
+           preserveRatio="true"
+           smooth="false"
+           fitWidth="380.0"
+           fitHeight="560.0"
+           VBox.vgrow="ALWAYS">
+
+		    <image>
+		        <Image url="@../images/Padelcito.png"/>
+		    </image>
+		
+		</ImageView>
+		
+		</VBox>
+
+    </children>
+</HBox>

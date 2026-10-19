@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           styleClass="content-area">
+
+    <ImageView preserveRatio="true"
+           smooth="false"
+           fitWidth="900.0"
+           fitHeight="506.5"
+           StackPane.alignment="CENTER">
+
+    <image>
+        <Image url="@../images/ComingSoon.png"/>
+    </image>
+
+</ImageView>
+
+</StackPane>

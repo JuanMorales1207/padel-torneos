@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ar.com.padel.controller.content.BaseContentController"
+      spacing="15"
+      styleClass="content-area">
+
+    <Label fx:id="titleLabel"
+           style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+
+    <StackPane fx:id="contentContainer"
+               VBox.vgrow="ALWAYS" />
+
+</VBox>

@@ -1,0 +1,148 @@
+
+/* ==============================
+   ESTRUCTURA PRINCIPAL
+   Menú lateral y contenido
+   ============================== */
+
+.main-layout {
+    -fx-background-color: #F4EBDD;
+}
+
+/* Menú lateral */
+
+.menu-root {
+    -fx-background-color: #797781;
+    -fx-padding: 24 16 16 16;
+    -fx-spacing: 12;
+}
+
+.menu-brand {
+    -fx-text-fill: white;
+    -fx-font-size: 21px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 8 18 8;
+}
+
+.menu-subtitle {
+    -fx-text-fill: #E5E4E8;
+    -fx-font-size: 11px;
+    -fx-padding: 0 8 8 8;
+}
+
+.menu-items {
+    -fx-padding: 8 0 0 0;
+    -fx-spacing: 5;
+}
+
+/* Elementos de navegación */
+
+.menu-item,
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #F2F0F3;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 11 12 11 12;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.menu-item:hover,
+.menu-button:hover {
+    -fx-background-color: #898791;
+    -fx-text-fill: white;
+}
+
+.menu-item-selected,
+.menu-button-active {
+    -fx-background-color: #E5E7DF;
+    -fx-text-fill: #343631;
+    -fx-font-weight: bold;
+    -fx-border-color: #94A69A;
+    -fx-border-width: 0 0 0 4;
+    -fx-background-radius: 0 6 6 0;
+}
+
+.menu-item-selected:hover,
+.menu-button-active:hover {
+    -fx-background-color: #E5E7DF;
+    -fx-text-fill: #343631;
+}
+
+/* También permite utilizar Labels como elementos de menú */
+
+.label.menu-item {
+    -fx-cursor: hand;
+}
+
+.label.menu-item:hover {
+    -fx-background-color: #898791;
+}
+
+.label.menu-item-selected {
+    -fx-background-color: #E5E7DF;
+    -fx-text-fill: #343631;
+    -fx-font-weight: bold;
+}
+
+/* Usuario conectado */
+
+.menu-user {
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 14 8 4 8;
+    -fx-border-color: #97959F transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+.menu-user-role {
+    -fx-text-fill: #E5E4E8;
+    -fx-font-size: 11px;
+    -fx-padding: 0 8 8 8;
+}
+
+/* Área principal */
+
+.content-root {
+    -fx-background-color: #F4EBDD;
+}
+
+/* Cabecera del contenido */
+
+.main-header {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 14 24;
+    -fx-border-color: transparent transparent #D8D8D0 transparent;
+}
+
+.main-header-title {
+    -fx-text-fill: #343631;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* Scroll del menú */
+
+.menu-root .scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-color: transparent;
+}
+
+.menu-root .scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.menu-root .scroll-bar .thumb {
+    -fx-background-color: #B6B4BD;
+}
+
+
+.logout-button {
+    -fx-font-size: 10px;
+    -fx-padding: 6px 8px;
+    -fx-min-width: 0;
+}
+
