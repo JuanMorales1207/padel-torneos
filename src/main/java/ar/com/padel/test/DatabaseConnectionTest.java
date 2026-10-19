@@ -13,10 +13,8 @@ public class DatabaseConnectionTest {
 
         try (Connection connection = dataSource.getConnection()) {
             System.out.println("Conexion exitosa con MySQL.");
-            System.out.println("Base de datos: "
-                    + connection.getCatalog());
-            System.out.println("Servidor: "
-                    + connection.getMetaData().getDatabaseProductName());
+            System.out.println("Base de datos: " + connection.getCatalog());
+            System.out.println("Servidor: " + connection.getMetaData().getDatabaseProductName());
         } catch (Exception e) {
             System.err.println("No se pudo conectar con MySQL.");
             e.printStackTrace();

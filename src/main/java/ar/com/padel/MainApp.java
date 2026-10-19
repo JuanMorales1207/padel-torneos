@@ -1,25 +1,32 @@
 package ar.com.padel;
 
+import ar.com.padel.ui.SceneManager;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
+	
+    private static Stage primaryStage;
 
     @Override
     public void start(Stage stage) {
-        Label mensaje = new Label(
-                "Sistema de Gestión y Análisis de Torneos de Pádel"
-        );
+        primaryStage = stage;
 
-        StackPane root = new StackPane(mensaje);
-        Scene scene = new Scene(root, 900, 600);
+        try {
+            stage.setTitle("Pádel Torneos");
+            // Inicializar las dependencias de la aplicación.
+            SceneManager.initialize();
+            // La pantalla inicial siempre será el login.
+            SceneManager.showLogin();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("No se pudo iniciar la aplicación Pádel Torneos.");
+            stage.close();
+        }
+    }
 
-        stage.setTitle("Pádel Torneos");
-        stage.setScene(scene);
-        stage.show();
+    public static Stage getPrimaryStage() {
+        return primaryStage;
     }
 
     public static void main(String[] args) {

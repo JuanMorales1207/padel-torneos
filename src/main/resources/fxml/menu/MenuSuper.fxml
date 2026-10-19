@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ar.com.padel.controller.menu.MenuSuperController"
+      spacing="20"
+      styleClass="menu-root">
+
+    <VBox spacing="4" styleClass="menu-brand">
+        <Label text="PÁDEL TORNEOS" styleClass="menu-brand"/>
+        <Label text="Administración del sistema" styleClass="menu-subtitle"/>
+    </VBox>
+
+    <ScrollPane fitToWidth="true"
+                hbarPolicy="NEVER"
+                vbarPolicy="AS_NEEDED">
+
+        <content>
+            <VBox spacing="18" styleClass="menu-items">
+
+                <Label fx:id="lblTorneos" text="🏆 Torneos"
+                       onMouseClicked="#onTorneos"
+                       styleClass="menu-item"/>
+
+                <Label fx:id="lblPartidos" text="🎾 Partidos"
+                       onMouseClicked="#onPartidos"
+                       styleClass="menu-item"/>
+
+                <Label fx:id="lblJugadores" text="👥 Jugadores"
+                       onMouseClicked="#onJugadores"
+                       styleClass="menu-item"/>
+
+                <Label fx:id="lblInscripciones" text="📝 Inscripciones"
+                       onMouseClicked="#onInscripciones"
+                       styleClass="menu-item"/>
+
+                <Label fx:id="lblEstadisticas" text="📊 Estadísticas"
+                       onMouseClicked="#onEstadisticas"
+                       styleClass="menu-item"/>
+
+                <Label fx:id="lblEmpleados" text="🛡 Usuarios"
+                       onMouseClicked="#onEmpleados"
+                       styleClass="menu-item"/>
+
+                <Label fx:id="lblReportes" text="📈 Reportes"
+                       onMouseClicked="#onReportes"
+                       styleClass="menu-item"/>
+
+                <Label fx:id="lblBackupDB" text="💾 Copia de seguridad"
+                       onMouseClicked="#onBackupDatabase"
+                       styleClass="menu-item"/>
+
+                <Label fx:id="lblAcercaDe" text="❓ Acerca de"
+                       onMouseClicked="#onAcercaDe"
+                       styleClass="menu-item"/>
+
+            </VBox>
+        </content>
+    </ScrollPane>
+
+    <Region VBox.vgrow="ALWAYS"/>
+
+    <VBox spacing="8" alignment="CENTER" styleClass="menu-user">
+        <Label fx:id="lblUser" text="Usuario"/>
+        <Label text="v1.0.0" styleClass="menu-subtitle"/>
+
+        <HBox spacing="8" alignment="CENTER">
+            <Button text="Mi cuenta"
+                    onAction="#onModifyUser"
+                    styleClass="logout-button"/>
+
+            <Button text="Cerrar sesión"
+                    onAction="#onLogout"
+                    styleClass="logout-button"/>
+        </HBox>
+    </VBox>
+
+</VBox>
