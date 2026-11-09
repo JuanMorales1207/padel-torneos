@@ -23,13 +23,13 @@ public class MenuOperatorController extends MenuBaseController {
 
     @FXML
     private void onTorneos(MouseEvent event) {
-    	mainLayoutController.setContentWithBase("Torneos", "/fxml/ComingSoon.fxml");
+    	mainLayoutController.setContentWithBase("Torneos", "/fxml/Tournament.fxml");
         setActive(lblTorneos);
     }
 
     @FXML
     private void onPartidos(MouseEvent event) {
-    	mainLayoutController.setContentWithBase("Partidos", "/fxml/ComingSoon.fxml");
+    	mainLayoutController.setContentWithBase("Partidos", "/fxml/TournamentMatches.fxml");
         setActive(lblPartidos);
     }
 

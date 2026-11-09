@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10"
+       xmlns="http://javafx.com/javafx/21"
+       xmlns:fx="http://javafx.com/fxml/1"
+       fx:controller="ar.com.padel.controller.content.TournamentMatchesController">
+
+    <!-- FILA 1: ACCIONES -->
+    <ToolBar fx:id="toolbar">
+        <Button text="Nuevo" onAction="#onNuevo"/>
+        <Button text="Editar" onAction="#onEditar"/>
+        <Button text="Borrar" onAction="#onBorrar"/>
+    </ToolBar>
+
+    <!-- GRILLA DE PARTIDOS -->
+    <TableView fx:id="matchTable"
+               VBox.vgrow="ALWAYS">
+
+        <placeholder>
+            <Label text="No hay partidos registrados."/>
+        </placeholder>
+
+        <columns>
+            <TableColumn fx:id="tournamentColumn"
+                         text="Torneo"
+                         prefWidth="180"/>
+
+            <TableColumn fx:id="roundColumn"
+                         text="Jornada"
+                         prefWidth="80"/>
+
+            <TableColumn fx:id="couple1Column"
+                         text="Pareja 1"
+                         prefWidth="180"/>
+
+            <TableColumn fx:id="couple2Column"
+                         text="Pareja 2"
+                         prefWidth="180"/>
+
+            <TableColumn fx:id="winnerColumn"
+                         text="Ganador"
+                         prefWidth="180"/>
+
+            <TableColumn fx:id="resultColumn"
+                         text="Resultado"
+                         prefWidth="180"/>
+        </columns>
+
+    </TableView>
+
+</VBox>

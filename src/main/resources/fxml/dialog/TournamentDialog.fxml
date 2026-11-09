@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15"
+      prefWidth="750"
+      prefHeight="600"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ar.com.padel.controller.content.dialog.TournamentDialogController"
+      style="-fx-padding: 15;">
+
+    <!-- ================= DATOS DEL TORNEO ================= -->
+
+    <Label text="Datos del torneo"
+           style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="12" vgap="12">
+
+        <columnConstraints>
+            <ColumnConstraints minWidth="130"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+            <ColumnConstraints minWidth="130"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <Label text="Nombre:"
+               GridPane.rowIndex="0"
+               GridPane.columnIndex="0"/>
+
+        <TextField fx:id="nameField"
+                   promptText="Nombre del torneo"
+                   GridPane.rowIndex="0"
+                   GridPane.columnIndex="1"
+                   GridPane.columnSpan="3"/>
+
+        <Label text="Categoría:"
+               GridPane.rowIndex="1"
+               GridPane.columnIndex="0"/>
+
+        <ComboBox fx:id="categoryCombo"
+                  promptText="Seleccionar categoría"
+                  maxWidth="Infinity"
+                  GridPane.rowIndex="1"
+                  GridPane.columnIndex="1"/>
+
+        <Label text="Fecha de inicio:"
+               GridPane.rowIndex="1"
+               GridPane.columnIndex="2"/>
+
+        <DatePicker fx:id="startDatePicker"
+                    promptText="Inicio"
+                    maxWidth="Infinity"
+                    GridPane.rowIndex="1"
+                    GridPane.columnIndex="3"/>
+
+        <Label text="Fecha de finalización:"
+               GridPane.rowIndex="2"
+               GridPane.columnIndex="0"/>
+
+        <DatePicker fx:id="endDatePicker"
+                    promptText="Finalización"
+                    maxWidth="Infinity"
+                    GridPane.rowIndex="2"
+                    GridPane.columnIndex="1"/>
+
+    </GridPane>
+
+    <Separator/>
+
+    <!-- ================= JORNADAS ================= -->
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+
+        <Label text="Jornadas"
+               style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button fx:id="btnAddRound"
+        text="Agregar"
+        onAction="#onAgregarJornada"/>
+
+		<Button fx:id="btnEditRound"
+		        text="Editar"
+		        onAction="#onEditarJornada"/>
+		
+		<Button fx:id="btnDeleteRound"
+		        text="Eliminar"
+		        onAction="#onEliminarJornada"/>
+
+    </HBox>
+
+    <TableView fx:id="roundsTable"
+               VBox.vgrow="ALWAYS">
+
+        <placeholder>
+            <Label text="No hay jornadas registradas."/>
+        </placeholder>
+
+        <columns>
+
+            <TableColumn fx:id="roundNumberColumn"
+                         text="N.º"
+                         prefWidth="60"/>
+
+            <TableColumn fx:id="roundDescriptionColumn"
+                         text="Descripción"
+                         prefWidth="220"/>
+
+            <TableColumn fx:id="roundStartDateColumn"
+                         text="Fecha de inicio"
+                         prefWidth="150"/>
+
+            <TableColumn fx:id="roundEndDateColumn"
+                         text="Fecha de finalización"
+                         prefWidth="150"/>
+
+        </columns>
+
+    </TableView>
+
+    <Separator/>
+
+    <!-- ================= ACCIONES ================= -->
+
+    <HBox alignment="CENTER_RIGHT" spacing="10">
+
+        <Button text="Editar"
+                fx:id="btnEdit"
+                onAction="#onEditar"/>
+
+        <Button text="Eliminar"
+                fx:id="btnDelete"
+                onAction="#onEliminar"/>
+
+        <Button text="Cancelar"
+                onAction="#onCancelar"
+                cancelButton="true"/>
+
+        <Button text="Guardar"
+                fx:id="btnSave"
+                defaultButton="true"
+                onAction="#onGuardar"/>
+
+    </HBox>
+
+</VBox>
