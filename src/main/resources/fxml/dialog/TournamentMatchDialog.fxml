@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="12"
+      prefWidth="650"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ar.com.padel.controller.content.dialog.TournamentMatchDialogController"
+      style="-fx-padding: 20;">
+
+    <Label text="Datos del partido"
+           style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="12" vgap="10">
+
+        <columnConstraints>
+            <ColumnConstraints minWidth="130"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <Label text="Torneo:"
+               GridPane.rowIndex="0"
+               GridPane.columnIndex="0"/>
+
+        <ComboBox fx:id="tournamentCombo"
+                  maxWidth="Infinity"
+                  GridPane.rowIndex="0"
+                  GridPane.columnIndex="1"/>
+
+        <Label text="Jornada:"
+               GridPane.rowIndex="1"
+               GridPane.columnIndex="0"/>
+
+        <ComboBox fx:id="roundCombo"
+                  maxWidth="Infinity"
+                  GridPane.rowIndex="1"
+                  GridPane.columnIndex="1"/>
+
+        <Label text="Fecha y hora:"
+               GridPane.rowIndex="2"
+               GridPane.columnIndex="0"/>
+
+        <HBox spacing="8"
+              alignment="CENTER_LEFT"
+              GridPane.rowIndex="2"
+              GridPane.columnIndex="1">
+
+            <DatePicker fx:id="matchDatePicker"
+                        prefWidth="180"/>
+
+            <ComboBox fx:id="hourCombo"
+                      promptText="Hora"
+                      prefWidth="100"/>
+
+            <Label text=":"/>
+
+            <ComboBox fx:id="minuteCombo"
+                      promptText="Minutos"
+                      prefWidth="100"/>
+
+        </HBox>
+
+        <Label text="Cancha:"
+               GridPane.rowIndex="3"
+               GridPane.columnIndex="0"/>
+
+        <TextField fx:id="courtField"
+                   promptText="Ej. Cancha 1"
+                   GridPane.rowIndex="3"
+                   GridPane.columnIndex="1"/>
+
+        <Label text="Descripción:"
+               GridPane.rowIndex="4"
+               GridPane.columnIndex="0"/>
+
+        <TextField fx:id="descriptionField"
+                   promptText="Descripción del partido"
+                   GridPane.rowIndex="4"
+                   GridPane.columnIndex="1"/>
+
+        <Label text="Etapa:"
+               GridPane.rowIndex="5"
+               GridPane.columnIndex="0"/>
+
+        <TextField fx:id="stageField"
+                   promptText="Etapa del torneo"
+                   GridPane.rowIndex="5"
+                   GridPane.columnIndex="1"/>
+
+        <Label text="Estado:"
+               GridPane.rowIndex="6"
+               GridPane.columnIndex="0"/>
+
+        <ComboBox fx:id="statusCombo"
+                  maxWidth="Infinity"
+                  GridPane.rowIndex="6"
+                  GridPane.columnIndex="1"/>
+
+        <Label text="Pareja 1:"
+               GridPane.rowIndex="7"
+               GridPane.columnIndex="0"/>
+
+        <ComboBox fx:id="couple1Combo"
+                  maxWidth="Infinity"
+                  GridPane.rowIndex="7"
+                  GridPane.columnIndex="1"/>
+
+        <Label text="Pareja 2:"
+               GridPane.rowIndex="8"
+               GridPane.columnIndex="0"/>
+
+        <ComboBox fx:id="couple2Combo"
+                  maxWidth="Infinity"
+                  GridPane.rowIndex="8"
+                  GridPane.columnIndex="1"/>
+
+    </GridPane>
+
+    <Separator/>
+
+    <Label text="Resultado"
+           style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+    <TableView fx:id="setsTable" prefHeight="150">
+        <columns>
+            <TableColumn fx:id="setNumberColumn"
+                         text="Set"
+                         prefWidth="60"/>
+
+            <TableColumn fx:id="gamesCouple1Column"
+                         text="Pareja 1"
+                         prefWidth="110"/>
+
+            <TableColumn fx:id="gamesCouple2Column"
+                         text="Pareja 2"
+                         prefWidth="110"/>
+
+            <TableColumn fx:id="tieBreakColumn"
+                         text="Tie-break"
+                         prefWidth="110"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="8" alignment="CENTER_RIGHT">
+        <Button text="Agregar set"
+                onAction="#onAgregarSet"/>
+
+        <Button fx:id="btnEditSet"
+                text="Editar set"
+                onAction="#onEditarSet"/>
+
+        <Button fx:id="btnDeleteSet"
+                text="Eliminar set"
+                onAction="#onEliminarSet"/>
+    </HBox>
+
+    <Separator/>
+
+    <HBox alignment="CENTER_RIGHT" spacing="10">
+        <Button text="Cancelar"
+                onAction="#onCancelar"
+                cancelButton="true"/>
+
+        <Button fx:id="btnSave"
+                text="Guardar"
+                defaultButton="true"
+                onAction="#onGuardar"/>
+    </HBox>
+
+</VBox>
