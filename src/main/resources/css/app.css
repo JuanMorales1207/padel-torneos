@@ -254,3 +254,21 @@
 .excel-button:hover {
     -fx-background-color: #42634D;
 }
+
+.text-field:disabled,
+.date-picker:disabled {
+    -fx-opacity: 1;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-padding: 5 0 5 0;
+}
+
+.text-field:disabled .text,
+.date-picker:disabled .text-field {
+    -fx-text-fill: #333333;
+}
+
+.date-picker:disabled .arrow-button {
+    -fx-opacity: 0;
+}

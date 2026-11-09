@@ -321,5 +321,52 @@ public class CoupleDAOImpl implements CoupleDAO {
 	        }
 	    }
 	}
+	
+	@Override
+	public Couple findByPlayers(Long player1Id, Long player2Id) throws SQLException {
+
+	    String sql = """
+	        SELECT
+	            c.CoupleId,
+	            c.Name AS CoupleName,
+	            c.RegistrationDate,
+	            c.IsActive,
+	            c.IsRemoved,
+	            c.DateAdded,
+	            c.DateChanged,
+	            c.Player1Id,
+	            c.Player2Id,
+	            p1.Name AS Player1Name,
+	            p1.LastName AS Player1LastName,
+	            p1.Birthdate AS Player1Birthdate,
+	            p1.Category AS Player1Category,
+	            p2.Name AS Player2Name,
+	            p2.LastName AS Player2LastName,
+	            p2.Birthdate AS Player2Birthdate,
+	            p2.Category AS Player2Category
+	        FROM Couple c
+	        INNER JOIN Player p1 ON p1.PlayerId = c.Player1Id
+	        INNER JOIN Player p2 ON p2.PlayerId = c.Player2Id
+	        WHERE c.IsRemoved = 0
+	          AND (
+	                (c.Player1Id = ? AND c.Player2Id = ?)
+	                OR
+	                (c.Player1Id = ? AND c.Player2Id = ?)
+	          )
+	        """;
+
+	    try (Connection con = dataSource.getConnection();
+	         PreparedStatement ps = con.prepareStatement(sql)) {
+
+	        ps.setLong(1, player1Id);
+	        ps.setLong(2, player2Id);
+	        ps.setLong(3, player2Id);
+	        ps.setLong(4, player1Id);
+
+	        try (ResultSet rs = ps.executeQuery()) {
+	            return rs.next() ? map(rs) : null;
+	        }
+	    }
+	}
     
 }

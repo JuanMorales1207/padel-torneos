@@ -1,6 +1,7 @@
 package ar.com.padel.ui;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 
 import javax.sql.DataSource;
@@ -15,6 +16,7 @@ import ar.com.padel.model.service.LoginService;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public final class SceneManager {
@@ -124,4 +126,14 @@ public final class SceneManager {
 
         scene.getStylesheets().add(css.toExternalForm());
     }
+
+	public static void setIcon(Stage stage) {
+		InputStream is = SceneManager.class.getResourceAsStream("/images/iconoPadelcito.png");
+        if (is == null) {
+            System.out.println(">>> ICON NULL");
+        } else {
+            stage.getIcons().add(new Image(is));
+        }
+		
+	}
 }

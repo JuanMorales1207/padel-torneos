@@ -2,6 +2,7 @@ package ar.com.padel.model.dao;
 
 import ar.com.padel.dto.EmployeeRow;
 import ar.com.padel.model.entity.Employee;
+import ar.com.padel.model.entity.RoleType;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -32,4 +33,11 @@ public interface EmployeeDAO {
     List<EmployeeRow> findAllForGrid() throws SQLException;
 
     void delete(Long employeeId) throws SQLException;
+    
+    List<RoleType> findAllRoles() throws SQLException;
+    
+    void updateMyAccount(Employee employee) throws SQLException;
+    
+    String findUserIdByEmployeeId(Long employeeId) throws SQLException;
+    
 }

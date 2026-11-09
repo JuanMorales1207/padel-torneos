@@ -1,7 +1,10 @@
 package ar.com.padel;
 
+import java.io.InputStream;
+
 import ar.com.padel.ui.SceneManager;
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -16,6 +19,8 @@ public class MainApp extends Application {
             stage.setTitle("Padelcito App");
             // Inicializar las dependencias de la aplicación.
             SceneManager.initialize();
+            // Setear ícono
+            SceneManager.setIcon(stage);
             // La pantalla inicial siempre será el login.
             SceneManager.showLogin();
         } catch (Exception e) {

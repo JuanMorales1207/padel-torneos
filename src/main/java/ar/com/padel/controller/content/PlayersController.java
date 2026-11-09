@@ -1,4 +1,4 @@
-package ar.com.padel.controller;
+package ar.com.padel.controller.content;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
