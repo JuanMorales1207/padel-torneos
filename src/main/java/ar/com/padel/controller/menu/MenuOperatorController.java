@@ -65,7 +65,7 @@ public class MenuOperatorController extends MenuBaseController {
 
     @FXML
     private void onEstadisticas(MouseEvent event) {
-        mainLayoutController.setContentWithBase("Estadísticas", "/fxml/ComingSoon.fxml");
+    	mainLayoutController.setContentWithBase("Estadísticas", "/fxml/Statistics.fxml");
         setActive(lblEstadisticas);
     }
 
