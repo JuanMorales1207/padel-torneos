@@ -54,9 +54,12 @@
                        onMouseClicked="#onEmpleados"
                        styleClass="menu-item"/>
 
-                <Label fx:id="lblReportes" text="📈 Reportes"
-                       onMouseClicked="#onReportes"
-                       styleClass="menu-item"/>
+                <Label fx:id="lblReportes"
+				       text="📈 Reportes"
+				       onMouseClicked="#onReportes"
+				       styleClass="menu-item"
+				       visible="false"
+				       managed="false"/>
 
                 <Label fx:id="lblAcercaDe" text="❓ Acerca de"
                        onMouseClicked="#onAcercaDe"
@@ -73,9 +76,10 @@
         <Label text="v1.0.0" styleClass="menu-subtitle"/>
 
         <HBox spacing="8" alignment="CENTER">
-            <Button text="Mi cuenta"
-                    onAction="#onModifyUser"
-                    styleClass="logout-button"/>
+            <Button fx:id="btnModifyUser"
+			        text="Mi cuenta"
+			        onAction="#onModifyUser"
+			        styleClass="logout-button"/>
 
             <Button text="Cerrar sesión"
                     onAction="#onLogout"

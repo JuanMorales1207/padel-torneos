@@ -9,7 +9,7 @@
 <VBox spacing="10"
       xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="ar.com.padel.controller.CouplesController"
+      fx:controller="ar.com.padel.controller.content.CouplesController"
       styleClass="content-area">
 
     <ToolBar styleClass="content-toolbar">

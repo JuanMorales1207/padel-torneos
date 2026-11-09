@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ar.com.padel.controller.content.TournamentRegistrationController">
+
+    <!-- FILA 1: ACCIONES -->
+    <ToolBar fx:id="toolbar">
+        <Button text="Nuevo" onAction="#onNuevo"/>
+        <Button text="Editar" onAction="#onEditar"/>
+        <Button text="Borrar" onAction="#onBorrar"/>
+    </ToolBar>
+
+    <!-- FILA 2: FILTROS -->
+    <HBox spacing="12"
+          alignment="BOTTOM_LEFT"
+          style="-fx-padding: 5 0 5 0;">
+
+        <VBox spacing="4">
+            <ComboBox fx:id="tournamentFilter"
+                      promptText="Todos los torneos"
+                      prefWidth="180"/>
+        </VBox>
+
+        <VBox spacing="4">
+            <ComboBox fx:id="coupleFilter"
+                      promptText="Todas las parejas"
+                      prefWidth="180"/>
+        </VBox>
+
+        <VBox spacing="4">
+            <DatePicker fx:id="dpDesde"
+                        promptText="Fecha inicial"
+                        prefWidth="160"/>
+        </VBox>
+
+        <VBox spacing="4">
+            <DatePicker fx:id="dpHasta"
+                        promptText="Fecha final"
+                        prefWidth="160"/>
+        </VBox>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button text="Filtrar"
+                onAction="#onFiltrar"
+                prefWidth="90"/>
+
+        <Button text="Limpiar"
+                onAction="#onLimpiarFiltro"
+                prefWidth="90"/>
+    </HBox>
+
+    <!-- GRILLA DE INSCRIPCIONES -->
+    <TableView fx:id="registrationTable"
+               VBox.vgrow="ALWAYS">
+
+        <placeholder>
+            <Label text="No hay inscripciones registradas."/>
+        </placeholder>
+
+        <columns>
+            <TableColumn fx:id="tournamentColumn"
+                         text="Torneo"
+                         prefWidth="280"/>
+
+            <TableColumn fx:id="coupleColumn"
+                         text="Pareja"
+                         prefWidth="280"/>
+
+            <TableColumn fx:id="dateColumn"
+                         text="Fecha de inscripción"
+                         prefWidth="180"/>
+        </columns>
+    </TableView>
+
+</VBox>

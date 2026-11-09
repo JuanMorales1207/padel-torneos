@@ -64,9 +64,10 @@
         <Label text="v1.0.0" styleClass="menu-subtitle"/>
 
         <HBox spacing="8" alignment="CENTER">
-            <Button text="Mi cuenta"
-                    onAction="#onModifyUser"
-                    styleClass="logout-button"/>
+            <Button fx:id="btnModifyUser"
+			        text="Mi cuenta"
+			        onAction="#onModifyUser"
+			        styleClass="logout-button"/>
 
             <Button text="Cerrar sesión"
                     onAction="#onLogout"

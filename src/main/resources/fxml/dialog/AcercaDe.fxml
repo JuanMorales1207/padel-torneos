@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ar.com.padel.controller.content.dialog.AboutDialogController"
+      alignment="CENTER"
+      spacing="14"
+      prefWidth="380"
+      styleClass="dialog-container">
+
+    <padding>
+        <Insets top="24" right="28" bottom="24" left="28"/>
+    </padding>
+
+    <ImageView fitHeight="100"
+               preserveRatio="true">
+        <image>
+            <Image url="@../../images/acercaDeImagen.png"/>
+        </image>
+    </ImageView>
+
+    <Label text="PADELCITO APP"
+           styleClass="section-title"/>
+
+    <Label text="Versión 1.0.0"/>
+
+    <Label text="Juan Morales"/>
+
+    <Label text="juanmorales.javadev@gmail.com"/>
+
+    <Label text="+54 387 4561018"/>
+
+    <Button fx:id="btnClose"
+        text="Cerrar"
+        onAction="#onClose"
+        styleClass="primary-button"/>
+
+</VBox>

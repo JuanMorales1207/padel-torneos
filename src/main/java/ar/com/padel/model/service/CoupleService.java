@@ -87,4 +87,19 @@ public class CoupleService {
             throw new IllegalArgumentException("Una pareja debe estar formada por dos jugadores distintos.");
         }
     }
+    
+    public Couple findByPlayers(Long player1Id, Long player2Id) throws SQLException {
+
+        if (player1Id == null || player2Id == null) {
+            throw new IllegalArgumentException("Los jugadores son obligatorios.");
+        }
+
+        if (player1Id.equals(player2Id)) {
+            throw new IllegalArgumentException(
+                    "Una pareja debe estar formada por dos jugadores distintos.");
+        }
+
+        return coupleDAO.findByPlayers(player1Id, player2Id);
+    }
+    
 }

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="12"
+      prefWidth="550"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ar.com.padel.controller.content.dialog.TournamentRegistrationDialogController"
+      style="-fx-padding: 20;">
+
+    <Label text="Datos de la inscripción"
+           style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="12" vgap="10">
+
+        <columnConstraints>
+            <ColumnConstraints minWidth="130"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+
+        <Label text="Torneo:"
+               GridPane.rowIndex="0"
+               GridPane.columnIndex="0"/>
+
+        <ComboBox fx:id="tournamentCombo"
+                  maxWidth="Infinity"
+                  GridPane.rowIndex="0"
+                  GridPane.columnIndex="1"/>
+
+        <Label text="Tipo de pareja:"
+               GridPane.rowIndex="1"
+               GridPane.columnIndex="0"/>
+
+        <VBox spacing="8"
+              GridPane.rowIndex="1"
+              GridPane.columnIndex="1">
+
+            <RadioButton fx:id="existingCoupleRadio"
+                         text="Seleccionar pareja existente"
+                         selected="true"/>
+
+            <RadioButton fx:id="newCoupleRadio"
+                         text="Seleccionar dos jugadores"/>
+        </VBox>
+
+        <Label text="Pareja:"
+               GridPane.rowIndex="2"
+               GridPane.columnIndex="0"/>
+
+        <ComboBox fx:id="coupleCombo"
+                  maxWidth="Infinity"
+                  GridPane.rowIndex="2"
+                  GridPane.columnIndex="1"/>
+
+        <Label text="Jugador 1:"
+               GridPane.rowIndex="3"
+               GridPane.columnIndex="0"/>
+
+        <ComboBox fx:id="player1Combo"
+                  maxWidth="Infinity"
+                  GridPane.rowIndex="3"
+                  GridPane.columnIndex="1"/>
+
+        <Label text="Jugador 2:"
+               GridPane.rowIndex="4"
+               GridPane.columnIndex="0"/>
+
+        <ComboBox fx:id="player2Combo"
+                  maxWidth="Infinity"
+                  GridPane.rowIndex="4"
+                  GridPane.columnIndex="1"/>
+
+    </GridPane>
+
+    <Separator/>
+
+    <HBox alignment="CENTER_RIGHT" spacing="10">
+
+        <Button text="Cancelar"
+                onAction="#onCancelar"
+                cancelButton="true"/>
+
+        <Button fx:id="btnSave"
+                text="Guardar"
+                defaultButton="true"
+                onAction="#onGuardar"/>
+
+    </HBox>
+
+</VBox>

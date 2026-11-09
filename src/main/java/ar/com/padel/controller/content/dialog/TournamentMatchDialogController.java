@@ -37,62 +37,43 @@ import javafx.util.StringConverter;
 
 public class TournamentMatchDialogController {
 
-    @FXML
-    private ComboBox<Tournament> tournamentCombo;
+    @FXML private ComboBox<Tournament> tournamentCombo;
 
-    @FXML
-    private ComboBox<TournamentRound> roundCombo;
+    @FXML private ComboBox<TournamentRound> roundCombo;
 
-    @FXML
-    private DatePicker matchDatePicker;
+    @FXML private DatePicker matchDatePicker;
 
-    @FXML
-    private ComboBox<String> hourCombo;
+    @FXML private ComboBox<String> hourCombo;
 
-    @FXML
-    private ComboBox<String> minuteCombo;
+    @FXML private ComboBox<String> minuteCombo;
 
-    @FXML
-    private TextField courtField;
+    @FXML private TextField courtField;
 
-    @FXML
-    private TextField descriptionField;
+    @FXML private TextField descriptionField;
 
-    @FXML
-    private TextField stageField;
+    @FXML private TextField stageField;
 
-    @FXML
-    private ComboBox<String> statusCombo;
+    @FXML private ComboBox<String> statusCombo;
 
-    @FXML
-    private ComboBox<Couple> couple1Combo;
+    @FXML private ComboBox<Couple> couple1Combo;
 
-    @FXML
-    private ComboBox<Couple> couple2Combo;
+    @FXML private ComboBox<Couple> couple2Combo;
 
-    @FXML
-    private TableView<MatchSet> setsTable;
+    @FXML private TableView<MatchSet> setsTable;
 
-    @FXML
-    private TableColumn<MatchSet, Integer> setNumberColumn;
+    @FXML private TableColumn<MatchSet, Integer> setNumberColumn;
 
-    @FXML
-    private TableColumn<MatchSet, Integer> gamesCouple1Column;
+    @FXML private TableColumn<MatchSet, Integer> gamesCouple1Column;
 
-    @FXML
-    private TableColumn<MatchSet, Integer> gamesCouple2Column;
+    @FXML private TableColumn<MatchSet, Integer> gamesCouple2Column;
 
-    @FXML
-    private TableColumn<MatchSet, Integer> tieBreakColumn;
+    @FXML private TableColumn<MatchSet, Integer> tieBreakColumn;
 
-    @FXML
-    private Button btnEditSet;
+    @FXML private Button btnEditSet;
 
-    @FXML
-    private Button btnDeleteSet;
+    @FXML private Button btnDeleteSet;
 
-    @FXML
-    private Button btnSave;
+    @FXML private Button btnSave;
 
     private TournamentMatchService matchService;
     private TournamentService tournamentService;

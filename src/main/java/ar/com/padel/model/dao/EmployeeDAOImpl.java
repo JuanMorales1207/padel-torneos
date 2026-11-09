@@ -312,6 +312,37 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             ps.executeUpdate();
         }
     }
+    
+    @Override
+    public List<RoleType> findAllRoles() throws SQLException {
+
+        String sql = """
+            SELECT RoleTypeId, ShortDescription, LongDescription
+            FROM RoleType
+            WHERE IsRemoved = 0
+            ORDER BY RoleTypeId
+            """;
+
+        List<RoleType> roles = new ArrayList<>();
+
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+
+                RoleType role = new RoleType();
+
+                role.setSurrogate(rs.getLong("RoleTypeId"));
+                role.setShortDescription(rs.getString("ShortDescription"));
+                role.setLongDescription(rs.getString("LongDescription"));
+
+                roles.add(role);
+            }
+        }
+
+        return roles;
+    }
 
     private Employee map(ResultSet rs) throws SQLException {
         Employee employee = new Employee();
@@ -394,6 +425,39 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
         return candidate;
     }
+    
+    @Override
+    public void updateMyAccount(Employee employee) throws SQLException {
+        String sql = """
+            UPDATE Employee
+            SET Name = ?,
+                LastName = ?,
+                Birthday = ?,
+                PasswordHash = COALESCE(?, PasswordHash),
+                UserChanged = ?,
+                DateChanged = CURRENT_TIMESTAMP
+            WHERE EmployeeId = ?
+              AND IsRemoved = 0
+            """;
+
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, employee.getName());
+            stmt.setString(2, employee.getLastname());
+            stmt.setDate(3, toDate(employee.getBirthdate()));
+            stmt.setString(4, employee.getPasswordHash());
+
+            setNullableLong(stmt, 5,
+                    employee.getUserChanged() != null
+                            ? employee.getUserChanged().getSurrogate()
+                            : null);
+
+            stmt.setLong(6, employee.getSurrogate());
+
+            stmt.executeUpdate();
+        }
+    }
 
     private void setNullableLong(PreparedStatement ps, int index, Long value) throws SQLException {
 
@@ -418,5 +482,25 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     private Timestamp toTimestamp(LocalDateTime dateTime) {
         return dateTime == null ? null : Timestamp.valueOf(dateTime);
+    }
+    
+    @Override
+    public String findUserIdByEmployeeId(Long employeeId) throws SQLException {
+        String sql = """
+            SELECT UserId
+            FROM Employee
+            WHERE EmployeeId = ?
+              AND IsRemoved = 0
+            """;
+
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setLong(1, employeeId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                return rs.next() ? rs.getString("UserId") : null;
+            }
+        }
     }
 }
