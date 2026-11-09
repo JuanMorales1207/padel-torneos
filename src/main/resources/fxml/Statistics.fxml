@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.ComboBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ar.com.padel.controller.content.StatisticsController">
+
+    <top>
+        <VBox spacing="8">
+            <padding>
+                <Insets top="20" right="20" bottom="10" left="20"/>
+            </padding>
+
+            <Label text="Información general y rendimiento de torneos, jugadores y parejas."
+                   style="-fx-font-size: 13px;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+
+                <Tab text="Resumen general">
+                    <content>
+                        <GridPane hgap="20" vgap="20">
+                            <padding>
+                                <Insets top="20" right="20" bottom="20" left="20"/>
+                            </padding>
+
+                            <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                <Label text="Torneos"/>
+                                <Label fx:id="lblTournamentsCount"
+                                       text="0"
+                                       style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+                            </VBox>
+
+                            <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                <Label text="Jornadas"/>
+                                <Label fx:id="lblRoundsCount"
+                                       text="0"
+                                       style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+                            </VBox>
+
+                            <VBox spacing="8" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                                <Label text="Jugadores"/>
+                                <Label fx:id="lblPlayersCount"
+                                       text="0"
+                                       style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+                            </VBox>
+
+                            <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                <Label text="Parejas"/>
+                                <Label fx:id="lblCouplesCount"
+                                       text="0"
+                                       style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+                            </VBox>
+
+                            <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <Label text="Partidos"/>
+                                <Label fx:id="lblMatchesCount"
+                                       text="0"
+                                       style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+                            </VBox>
+                        </GridPane>
+                    </content>
+                </Tab>
+
+                <Tab text="Torneos y jornadas">
+				    <content>
+				        <VBox spacing="12">
+				            <padding>
+				                <Insets top="20" right="20" bottom="20" left="20"/>
+				            </padding>
+				
+				            <Label text="Torneos"
+				                   style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+				
+				            <TableView fx:id="tblTournaments" prefHeight="180">
+				                <columns>
+				                    <TableColumn fx:id="colTournamentName"
+				                                 text="Torneo" prefWidth="250"/>
+				                    <TableColumn fx:id="colTournamentDate"
+				                                 text="Fecha de inicio" prefWidth="150"/>
+				                    <TableColumn fx:id="colTournamentEndDate"
+				                                 text="Fecha de finalización" prefWidth="170"/>
+				                </columns>
+				            </TableView>
+				
+				            <Label text="Jornadas del torneo seleccionado"
+				                   style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+				
+				            <TableView fx:id="tblRounds" prefHeight="180">
+				                <columns>
+				                    <TableColumn fx:id="colRoundNumber"
+				                                 text="N.º" prefWidth="60"/>
+				                    <TableColumn fx:id="colRoundDescription"
+				                                 text="Descripción" prefWidth="250"/>
+				                    <TableColumn fx:id="colRoundStartDate"
+				                                 text="Fecha de inicio" prefWidth="150"/>
+				                    <TableColumn fx:id="colRoundEndDate"
+				                                 text="Fecha de finalización" prefWidth="170"/>
+				                    <TableColumn fx:id="colRoundMatches"
+				                                 text="Partidos" prefWidth="100"/>
+				                </columns>
+				            </TableView>
+				        </VBox>
+				    </content>
+				</Tab>
+
+                <Tab text="Jugadores">
+				    <content>
+				        <VBox spacing="15">
+				            <padding>
+				                <Insets top="20" right="20" bottom="20" left="20"/>
+				            </padding>
+				
+				            <Label text="Ranking y estadísticas de jugadores"
+				                   style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+				
+				            <HBox spacing="10" alignment="CENTER_LEFT">
+				                <Label text="Filtrar por torneo:"/>
+				                <ComboBox fx:id="cmbPlayerTournament"
+				                          promptText="Histórico general"
+				                          prefWidth="250"/>
+				            </HBox>
+				
+				            <TableView fx:id="tblPlayers" VBox.vgrow="ALWAYS">
+				                <columns>
+				                    <TableColumn fx:id="colPlayerName"
+				                                 text="Jugador" prefWidth="180"/>
+				
+				                    <TableColumn fx:id="colPlayerMatchesPlayed"
+				                                 text="PJ" prefWidth="65"/>
+				
+				                    <TableColumn fx:id="colPlayerMatchesWon"
+				                                 text="PG" prefWidth="65"/>
+				
+				                    <TableColumn fx:id="colPlayerMatchesLost"
+				                                 text="PP" prefWidth="65"/>
+				
+				                    <TableColumn fx:id="colPlayerMatchesWonPercentage"
+             								     text="Pcj PG" prefWidth="85"/>
+				
+				                    <TableColumn fx:id="colPlayerGamesWon"
+				                                 text="GG" prefWidth="110"/>
+				
+				                    <TableColumn fx:id="colPlayerGamesLost"
+				                                 text="GP" prefWidth="110"/>
+				
+				                    <TableColumn fx:id="colPlayerGamesWonPercentage"
+             									 text="Pcj GG" prefWidth="120"/>
+				                </columns>
+				            </TableView>
+				        </VBox>
+				    </content>
+				</Tab>
+
+                <Tab text="Parejas">
+                    <content>
+                        <VBox spacing="15">
+                            <padding>
+                                <Insets top="20" right="20" bottom="20" left="20"/>
+                            </padding>
+                            <Label text="Ranking y estadísticas de parejas"/>
+                        </VBox>
+                    </content>
+                </Tab>
+
+            </tabs>
+        </TabPane>
+    </center>
+
+</BorderPane>
